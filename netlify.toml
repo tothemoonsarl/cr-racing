@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+
+# Barrière d'accès avant le lancement (voir netlify/edge-functions/gate.js)
+[[edge_functions]]
+  path = "/*"
+  function = "gate"

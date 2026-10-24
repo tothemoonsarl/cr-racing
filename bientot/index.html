@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CR Racing — Bientôt en piste</title>
+<meta name="description" content="Le site de l'écurie de karting CR Racing arrive bientôt. Laissez votre e-mail pour être prévenu du lancement.">
+<meta name="theme-color" content="#1b1c17">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Instrument+Serif&family=Inter:wght@400;600;700&display=swap">
+<link rel="icon" href="/assets/logo-cr.svg" type="image/svg+xml">
+<style>
+:root{--paper:#ecebe4;--ink:#1b1c17;--line:#3a3b33;--muted:#8f9084;--red:#c90009;--red-hi:#ee1c25;--green:#00923f;
+  --sans:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;--serif:"Instrument Serif","Times New Roman",serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--ease:cubic-bezier(.2,.75,.1,1);color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--paper);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.topo{position:fixed;inset:0;pointer-events:none;background:var(--paper);opacity:.06;-webkit-mask:url(/assets/topo.svg) center/cover no-repeat;mask:url(/assets/topo.svg) center/cover no-repeat}
+.stripe{position:fixed;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--green) 0 33.3%,#fff 33.3% 66.6%,var(--red-hi) 66.6%)}
+.lang{position:fixed;top:18px;right:18px;display:flex;gap:8px;z-index:2}
+.lang button{padding:0;border:0;background:none;cursor:pointer;line-height:0;opacity:.4;transition:opacity .2s}
+.lang button:hover,.lang button[aria-pressed="true"]{opacity:1}
+.lang svg{width:22px;height:15px;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+.lang button[aria-pressed="true"] svg{box-shadow:0 0 0 2px var(--red-hi)}
+main{position:relative;min-height:100%;display:grid;place-items:center;padding:72px 20px 40px}
+.box{width:min(100%,560px);display:grid;justify-items:center;gap:22px;text-align:center}
+.logo{width:min(70vw,340px);height:auto;animation:in 1.1s var(--ease) both}
+.kicker{font:700 10px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{margin:0;font-weight:400;font-size:clamp(54px,13vw,104px);line-height:.86;text-transform:uppercase;animation:in 1.1s var(--ease) .1s both}
+h1 span{display:block}
+h1 .sans{font-family:var(--sans);font-weight:800}
+h1 .serif{font-family:var(--serif);color:var(--red-hi)}
+.lead{color:#b4b5a9;max-width:40ch;animation:in 1.1s var(--ease) .2s both}
+form{width:100%}
+.notify{display:flex;gap:8px;width:100%;animation:in 1.1s var(--ease) .3s both}
+input{flex:1;min-width:0;font:400 16px/1.2 var(--body);color:var(--paper);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:6px;padding:14px 14px}
+input:focus{outline:none;border-color:var(--red-hi)}
+button.go{flex:none;border:0;border-radius:6px;background:var(--red);color:#fff;font:700 13px/1 var(--body);letter-spacing:.04em;text-transform:uppercase;padding:0 18px;cursor:pointer;transition:background .2s}
+button.go:hover{background:var(--red-hi)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--red-hi);outline-offset:2px}
+.note{min-height:20px;font-size:13px;color:#b4b5a9}
+.note.ok{color:#5fd393;font-weight:600}
+.note.ko{color:#ff6b6b}
+.small{font-size:12px;color:var(--muted)}
+details{margin-top:18px;width:100%;border-top:1px solid var(--line);padding-top:16px}
+summary{cursor:pointer;font:700 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:" +";}
+details[open] summary::after{content:" –"}
+.team{display:flex;gap:8px;margin-top:14px}
+.team button.go{background:var(--paper);color:var(--ink)}
+.team button.go:hover{background:#fff}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.logo,h1,.lead,.notify{animation:none}}
+@media (max-width:440px){.notify,.team{flex-direction:column}button.go{padding:14px 18px}}
+</style>
+</head>
+<body>
+<div class="topo" aria-hidden="true"></div>
+<div class="stripe" aria-hidden="true"></div>
+
+<div class="lang" role="group" aria-label="Langue">
+  <button type="button" data-lang="fr" aria-label="Français" title="Français"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></button>
+  <button type="button" data-lang="en" aria-label="English" title="English"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk-s"><path d="M0,0v30h60V0z"/></clipPath><clipPath id="uk-t"><path d="M30,15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#uk-s)"><path d="M0,0v30h60V0z" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg></button>
+  <button type="button" data-lang="de" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 5 3" aria-hidden="true"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#DD0000"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg></button>
+  <button type="button" data-lang="it" aria-label="Italiano" title="Italiano"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE2B37"/></svg></button>
+</div>
+
+<main>
+  <div class="box">
+    <img class="logo" src="/assets/logo-cr.svg" alt="CR Racing" width="1087" height="437">
+    <p class="kicker" data-t="kicker">Écurie de karting · Suisse</p>
+    <h1><span class="sans" data-t="t1">Bientôt</span><span class="serif" data-t="t2">en piste</span></h1>
+    <p class="lead" data-t="lead">Le site de CR Racing arrive. Laissez votre e-mail pour être prévenu du lancement.</p>
+
+    <form name="lancement" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" id="f-launch">
+      <input type="hidden" name="form-name" value="lancement">
+      <input type="hidden" name="langue" value="fr">
+      <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+      <div class="notify">
+        <label class="sr-only" for="email" data-t="email">Votre e-mail</label>
+        <input id="email" name="email" type="email" required autocomplete="email" placeholder="Votre e-mail" data-ph="email">
+        <button class="go" type="submit" data-t="notify">Me prévenir</button>
+      </div>
+    </form>
+    <p class="note" id="note" aria-live="polite"></p>
+    <p class="small" data-t="privacy">Votre adresse sert uniquement à vous prévenir du lancement.</p>
+
+    <details id="team">
+      <summary data-t="team">Accès équipe</summary>
+      <form method="POST" action="/__unlock" class="team">
+        <input type="hidden" name="lang" value="fr">
+        <label class="sr-only" for="pw" data-t="pw">Mot de passe</label>
+        <input id="pw" name="password" type="password" required autocomplete="current-password" placeholder="Mot de passe" data-ph="pw">
+        <button class="go" type="submit" data-t="enter">Entrer</button>
+      </form>
+      <p class="note ko" id="pw-error" hidden data-t="bad">Mot de passe incorrect.</p>
+    </details>
+  </div>
+</main>
+
+<script>
+const T = {
+  fr: { kicker: 'Écurie de karting · Suisse', t1: 'Bientôt', t2: 'en piste', lead: 'Le site de CR Racing arrive. Laissez votre e-mail pour être prévenu du lancement.', email: 'Votre e-mail', notify: 'Me prévenir', privacy: 'Votre adresse sert uniquement à vous prévenir du lancement.', team: 'Accès équipe', pw: 'Mot de passe', enter: 'Entrer', bad: 'Mot de passe incorrect.', ok: 'Merci ! Vous serez prévenu du lancement.', ko: "L'envoi a échoué. Réessayez dans un instant.", sending: 'Envoi…', preview: "Aperçu : l'envoi sera actif sur le site en ligne.", title: 'CR Racing — Bientôt en piste' },
+  en: { kicker: 'Karting team · Switzerland', t1: 'Soon', t2: 'on track', lead: 'The CR Racing website is on its way. Leave your email to hear about the launch.', email: 'Your email', notify: 'Notify me', privacy: 'Your address is only used to tell you about the launch.', team: 'Team access', pw: 'Password', enter: 'Enter', bad: 'Incorrect password.', ok: 'Thank you! We will let you know at launch.', ko: 'Sending failed. Please try again in a moment.', sending: 'Sending…', preview: 'Preview: sending will be active on the live site.', title: 'CR Racing — Soon on track' },
+  de: { kicker: 'Kart-Team · Schweiz', t1: 'Bald', t2: 'auf der Strecke', lead: 'Die Website von CR Racing kommt bald. Hinterlassen Sie Ihre E-Mail, um beim Start informiert zu werden.', email: 'Ihre E-Mail', notify: 'Benachrichtigen', privacy: 'Ihre Adresse wird nur verwendet, um Sie über den Start zu informieren.', team: 'Team-Zugang', pw: 'Passwort', enter: 'Weiter', bad: 'Falsches Passwort.', ok: 'Danke! Wir informieren Sie beim Start.', ko: 'Der Versand ist fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal.', sending: 'Wird gesendet…', preview: 'Vorschau: Der Versand ist auf der Live-Website aktiv.', title: 'CR Racing — Bald auf der Strecke' },
+  it: { kicker: 'Scuderia di karting · Svizzera', t1: 'Presto', t2: 'in pista', lead: 'Il sito di CR Racing sta arrivando. Lasciate la vostra e-mail per essere avvisati al lancio.', email: 'La vostra e-mail', notify: 'Avvisatemi', privacy: 'Il vostro indirizzo serve solo ad avvisarvi del lancio.', team: 'Accesso squadra', pw: 'Password', enter: 'Entra', bad: 'Password errata.', ok: 'Grazie! Vi avviseremo al lancio.', ko: 'Invio non riuscito. Riprovate tra un istante.', sending: 'Invio…', preview: "Anteprima: l'invio sarà attivo sul sito online.", title: 'CR Racing — Presto in pista' }
+};
+const qs = new URLSearchParams(location.search);
+let lang = qs.get('lang') || (navigator.language || 'fr').slice(0, 2);
+if (!T[lang]) lang = 'fr';
+function apply(l) {
+  lang = l; const t = T[l];
+  document.documentElement.lang = l; document.title = t.title;
+  document.querySelectorAll('[data-t]').forEach(el => { el.textContent = t[el.dataset.t]; });
+  document.querySelectorAll('[data-ph]').forEach(el => { el.placeholder = t[el.dataset.ph]; });
+  document.querySelectorAll('input[name="langue"],input[name="lang"]').forEach(i => { i.value = l; });
+  document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
+apply(lang);
+
+// Mauvais mot de passe : le serveur renvoie ici avec ?erreur=1
+if (qs.get('erreur')) { document.getElementById('team').open = true; document.getElementById('pw-error').hidden = false; }
+
+// Inscription au lancement (Netlify Forms)
+const form = document.getElementById('f-launch'), note = document.getElementById('note');
+const live = /cr-racing\.ch$|netlify\.app$/.test(location.hostname);
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  note.className = 'note';
+  if (!live) { note.textContent = T[lang].preview; return; }
+  note.textContent = T[lang].sending;
+  try {
+    const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
+    if (!r.ok) throw 0;
+    form.reset(); note.className = 'note ok'; note.textContent = T[lang].ok;
+  } catch { note.className = 'note ko'; note.textContent = T[lang].ko; }
+});
+</script>
+</body>
+</html>

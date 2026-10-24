@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CR Racing — Écurie de karting</title>
+<meta name="description" content="CR Racing, écurie de karting suisse : pilotes, saison, résultats. Places pilotes et partenariats ouverts.">
+<meta name="theme-color" content="#ecebe4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="assets/logo-cr.svg" type="image/svg+xml">
+</head>
+<body>
+
+<!-- Barres de transition (ouverture du menu, changement de section) -->
+<div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<header class="top">
+  <a class="join-pill" href="#contact"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13V6l5-3 5 3v7H3zm3 0V9h4v4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Rejoindre</a>
+  <!--LANG-->
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="sr-only">Menu</span><i></i><i></i></button>
+</header>
+
+<nav class="menu" id="menu" aria-label="Navigation principale" hidden>
+  <div class="topo" aria-hidden="true"></div>
+  <ul>
+    <li><a href="#top">Accueil</a></li>
+    <li><a href="#en-piste">En piste</a></li>
+    <li><a href="#hors-piste">Hors piste</a></li>
+    <li><a href="#saison">Calendrier</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <img class="menu-logo" src="assets/logo-cr.svg" alt="" width="1087" height="437">
+  <p class="menu-tag">Écurie de karting · Suisse</p>
+</nav>
+
+<main id="top">
+
+  <!-- 1. Hero : la photo se rétracte en carte, le fond passe au noir -->
+  <section class="hero" data-hero>
+    <div class="hero-pin">
+      <div class="topo" aria-hidden="true"></div>
+      <div class="hero-title">
+        <img class="hero-mark" src="assets/logo-cr.svg" alt="" width="1087" height="437">
+        <h1><span class="sans">CR</span><span class="serif">Racing</span></h1>
+        <p class="tag">Écurie de karting · Suisse</p>
+      </div>
+      <div class="hero-card">
+        <div class="hero-photo ph"><span class="todo">Photo pilote / kart</span></div>
+        <p class="card-label">Message de l'équipe</p>
+        <svg class="scribble s-hero" viewBox="0 0 400 220" aria-hidden="true"><path pathLength="1" d="M18 168c40-30 92-62 150-78 44-12 70 2 52 26-22 30-90 52-80 18 12-40 120-96 168-86 30 6 8 46-24 70-26 20-40 18-22-2 26-28 74-50 120-58"/><path pathLength="1" d="M70 196c80-22 170-40 260-46"/></svg>
+      </div>
+      <div class="hero-lines" aria-hidden="true">
+        <div class="line" data-dir="-1"><span><b>À fond</b> <i>sur chaque</i> <b>tour</b> <i>à fond</i> <b>sur chaque tour</b> <i>à fond sur chaque</i> <b>tour</b></span></div>
+        <div class="line" data-dir="1"><span><i>Une équipe</i> <b>un seul objectif</b> <i>une équipe</i> <b>un seul objectif</b> <i>une équipe</i> <b>un seul objectif</b></span></div>
+      </div>
+      <p class="scroll-hint" aria-hidden="true">Défiler</p>
+    </div>
+  </section>
+
+  <!-- 2. Manifeste -->
+  <section class="manifesto">
+    <img class="mini-mark" src="assets/logo-cr.svg" alt="" width="1087" height="437">
+    <p class="tag light">Écurie de karting · Suisse</p>
+    <p class="big-statement"><span class="sans">Préparer le</span> <span class="serif hl">matériel</span><span class="sans">, lire les</span> <span class="serif hl">données</span><span class="sans">, aller chercher</span> <span class="serif hl">chaque dixième</span><span class="sans">. Une équipe</span> <span class="serif">en piste</span> <span class="sans">comme</span> <span class="serif">hors piste.</span></p>
+  </section>
+
+  <!-- 3. Collage photo en parallaxe, le fond passe du noir au clair -->
+  <section class="collage" aria-label="L'équipe en images">
+    <figure class="c-item" style="--x:6%;--y:4%;--w:30%" data-speed="-.12"><div class="ph"></div><figcaption>Paddock, 2026</figcaption></figure>
+    <figure class="c-item" style="--x:58%;--y:0%;--w:34%" data-speed=".18"><div class="ph alt"></div><figcaption>Départ, 2026</figcaption></figure>
+    <figure class="c-item" style="--x:28%;--y:20%;--w:44%" data-speed=".05"><img src="assets/livree.jpg" alt="Planche des stickers de la livrée CR Racing" loading="lazy" width="1245" height="804"><figcaption>La livrée</figcaption></figure>
+    <figure class="c-item" style="--x:72%;--y:38%;--w:24%" data-speed="-.2"><div class="ph"></div><figcaption>Réglages, 2026</figcaption></figure>
+    <figure class="c-item" style="--x:4%;--y:44%;--w:32%" data-speed=".22"><div class="ph alt"></div><figcaption>Grille, 2026</figcaption></figure>
+    <figure class="c-item" style="--x:44%;--y:58%;--w:26%" data-speed="-.08"><div class="ph"></div><figcaption>Podium, 2026</figcaption></figure>
+    <p class="c-text" style="--x:8%;--y:70%">Tout a commencé sur une piste de karting. Depuis, l'équipe travaille chaque week-end pour faire progresser ses pilotes, un tour après l'autre.</p>
+    <figure class="c-item" style="--x:62%;--y:84%;--w:28%" data-speed=".08"><div class="ph alt"></div><figcaption>Coulisses, 2026</figcaption></figure>
+  </section>
+
+  <!-- 4. En piste / Hors piste -->
+  <section class="tracks">
+    <div class="track" id="en-piste">
+      <h2><span class="sans">En</span><span class="sans">piste</span></h2>
+      <svg class="scribble s-track" viewBox="0 0 220 160" aria-hidden="true"><path pathLength="1" d="M30 110c-10-40 20-80 50-74 26 6 20 60-6 74-30 16-46-30-20-50M110 120c6-30 10-60 14-84 4 24 30 70 40 84 4-28 10-60 12-84"/></svg>
+      <p>Résultats récents, statistiques de saison et photos depuis le bord de piste.</p>
+      <a class="sq-btn" href="#saison" aria-label="Voir le calendrier"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+    </div>
+    <div class="track" id="hors-piste">
+      <h2><span class="sans">Hors</span><span class="sans">piste</span></h2>
+      <p>L'équipe, le recrutement et les coulisses des week-ends de course.</p>
+      <a class="sq-btn" href="#equipe" aria-label="Voir l'équipe"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+    </div>
+    <div class="strip">
+      <div class="strip-img ph" data-speed="-.1"></div>
+      <div class="strip-img ph alt" data-speed=".1"></div>
+    </div>
+  </section>
+
+  <!-- 5. Galerie de cartes à encoche : pilotes et livrées -->
+  <section class="hall" id="equipe">
+    <div class="hall-head">
+      <h2><span class="sans">Pilotes</span><span class="serif">&amp; livrées</span></h2>
+      <p>Chaque pilote dispose d'un programme de saison, d'un matériel préparé par l'équipe et d'un débrief après chaque séance.</p>
+    </div>
+    <div class="hall-grid">
+      <article class="notch"><div class="notch-in"><div class="n-img ph"><span class="todo">Photo</span></div><p class="n-cap"><span>Pilote 1</span><b>#—</b></p></div></article>
+      <article class="notch"><div class="notch-in"><div class="n-img ph alt"><span class="todo">Photo</span></div><p class="n-cap"><span>Pilote 2</span><b>#—</b></p></div></article>
+      <article class="notch"><div class="notch-in"><div class="n-img"><img src="assets/livree.jpg" alt="Livrée CR Racing" loading="lazy"></div><p class="n-cap"><span>Livrée</span><b>2026</b></p></div></article>
+      <a class="notch open" href="#contact" data-tab="pilote"><div class="notch-in"><div class="n-img q">?</div><p class="n-cap"><span>Votre place</span><b>2026</b></p></div></a>
+    </div>
+    <div class="hall-more">
+      <img class="mini-mark" src="assets/logo-cr.svg" alt="" width="1087" height="437">
+      <p class="serif-p">Places pilotes ouvertes pour la saison</p>
+      <a class="cta" href="#contact" data-tab="pilote">Postuler <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+    </div>
+  </section>
+
+  <!-- 6. Saison -->
+  <section class="season" id="saison">
+    <div class="season-head">
+      <h2><span class="sans">Saison</span><span class="serif">2026</span></h2>
+      <p>Les manches de la saison et les résultats de l'équipe, mis à jour après chaque course.</p>
+    </div>
+    <ol class="races">
+      <li><span class="r-no">R1</span><span class="r-name">Circuit à compléter</span><span class="r-date"><span class="todo">Date</span></span></li>
+      <li><span class="r-no">R2</span><span class="r-name">Circuit à compléter</span><span class="r-date"><span class="todo">Date</span></span></li>
+      <li><span class="r-no">R3</span><span class="r-name">Circuit à compléter</span><span class="r-date"><span class="todo">Date</span></span></li>
+      <li><span class="r-no">R4</span><span class="r-name">Circuit à compléter</span><span class="r-date"><span class="todo">Date</span></span></li>
+    </ol>
+  </section>
+
+  <!-- 7. Partenaires : mot manuscrit + logos qui défilent -->
+  <section class="partners" id="partenaires">
+    <div class="partners-head">
+      <h2><span class="sans">Partenaires</span><span class="serif">&amp; soutiens</span></h2>
+      <svg class="scribble s-partners" viewBox="0 0 520 200" aria-hidden="true"><path pathLength="1" d="M20 150c30-60 70-110 100-104 24 6-6 70-40 96M150 140c10-30 40-60 64-56 20 4 4 40-22 46-20 4-14-20 10-24M250 150c4-40 16-80 30-100M260 110c40-20 70-10 60 20-8 24-40 30-56 16M360 150c10-36 36-66 60-62 20 4 10 34-12 42M440 70c-20 20-20 60 10 70 26 8 50-20 60-40"/></svg>
+      <p>Associez votre entreprise à une équipe jeune et ambitieuse : sur les karts, au paddock et en ligne.</p>
+    </div>
+    <div class="logos" aria-label="Partenaires">
+      <div class="logos-track"><span>Votre logo</span><span>Votre logo</span><span>Votre logo</span><span>Votre logo</span><span>Votre logo</span><span>Votre logo</span><span>Votre logo</span><span>Votre logo</span></div>
+    </div>
+    <a class="cta dark" href="#contact" data-tab="partenaire">Devenir partenaire <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+  </section>
+
+  <!-- 8. Réseaux : éventail de cartes qui s'ouvre au défilement -->
+  <section class="social" data-fan>
+    <h2><span class="sans">Suivre</span><span class="serif">l'équipe</span></h2>
+    <div class="fan" aria-hidden="true">
+      <div class="f-card ph"></div><div class="f-card ph alt"></div><div class="f-card"><img src="assets/livree.jpg" alt="" loading="lazy"></div><div class="f-card ph alt"></div><div class="f-card ph"></div>
+    </div>
+    <p class="serif-p">Suivez CR Racing sur les réseaux</p>
+    <p class="socials"><span class="todo">Réseaux à compléter</span></p>
+  </section>
+
+  <!-- 9. Contact -->
+  <section class="contact" id="contact">
+    <div class="contact-head">
+      <h2><span class="sans">Prenons</span><span class="serif">le départ</span></h2>
+      <p>Pilote, parent ou entreprise : écrivez-nous en quelques lignes, nous vous répondons rapidement.</p>
+    </div>
+    <div class="contact-box">
+      <div class="tabs" role="tablist" aria-label="Type de demande">
+        <button type="button" role="tab" id="t-pilote" aria-controls="f-pilote" aria-selected="true">Pilote</button>
+        <button type="button" role="tab" id="t-partenaire" aria-controls="f-partenaire" aria-selected="false">Partenaire</button>
+      </div>
+      <form name="pilote" id="f-pilote" role="tabpanel" aria-labelledby="t-pilote" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="pilote">
+        <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+        <div class="row">
+          <label>Nom du pilote<input name="nom" required autocomplete="name"></label>
+          <label>Âge<input name="age" inputmode="numeric"></label>
+        </div>
+        <div class="row">
+          <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+          <label>Téléphone<input name="telephone" type="tel" autocomplete="tel"></label>
+        </div>
+        <label>Expérience<select name="experience"><option>Débutant</option><option>1 à 2 saisons</option><option>3 saisons et plus</option></select></label>
+        <label>Votre projet<textarea name="message" required placeholder="Catégorie, championnat visé, résultats récents…"></textarea></label>
+        <div class="send"><button class="cta" type="submit">Envoyer la candidature</button><span class="form-note" aria-live="polite"></span></div>
+      </form>
+      <form name="partenaire" id="f-partenaire" role="tabpanel" aria-labelledby="t-partenaire" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="partenaire">
+        <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+        <div class="row">
+          <label>Nom<input name="nom" required autocomplete="name"></label>
+          <label>Entreprise<input name="entreprise" required autocomplete="organization"></label>
+        </div>
+        <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+        <label>Votre message<textarea name="message" required placeholder="Votre secteur, ce que vous attendez d'un partenariat…"></textarea></label>
+        <div class="send"><button class="cta" type="submit">Demander le dossier</button><span class="form-note" aria-live="polite"></span></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- 10. Pied de page : carte sombre à encoche sur fond rouge -->
+<footer class="footer">
+  <div class="foot-card">
+    <div class="topo" aria-hidden="true"></div>
+    <div class="foot-logos"><span>Partenaire</span><span>Partenaire</span><span>Partenaire</span></div>
+    <div class="foot-cols">
+      <nav aria-label="Pages"><p>Pages</p><a href="#top">Accueil</a><a href="#en-piste">En piste</a><a href="#hors-piste">Hors piste</a><a href="#saison">Calendrier</a></nav>
+      <div><p>Suivre</p><span class="todo">Réseaux à compléter</span></div>
+    </div>
+    <p class="slogan"><span class="sans">Toujours</span> <span class="serif">plus vite.</span>
+      <svg class="scribble s-foot" viewBox="0 0 300 120" aria-hidden="true"><path pathLength="1" d="M10 90c30-50 70-80 96-70 20 8-10 50-34 52M120 86c20-40 50-60 70-52 16 8-4 36-24 40M200 80c30-10 60-40 90-70"/></svg>
+    </p>
+    <div class="foot-img"><img src="assets/logo-cr.svg" alt="" width="1087" height="437"></div>
+    <a class="cta" href="#contact" data-tab="partenaire">Partenariats <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+  </div>
+  <p class="legal">© 2026 CR Racing · Suisse</p>
+</footer>
+
+<script src="assets/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
