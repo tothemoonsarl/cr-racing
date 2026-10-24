@@ -148,3 +148,53 @@ document.querySelectorAll('form[data-netlify]').forEach(form => {
     } catch { status.textContent = MSG.ko; }
   });
 });
+
+// Lignes topographiques animées dans tous les fonds .topo :
+// les contours « respirent » et des traits vert, blanc et rouge filent le long des lignes.
+(async () => {
+  const layers = [...document.querySelectorAll('.topo')];
+  if (!layers.length) return;
+  try {
+    const src = await (await fetch('assets/topo.svg')).text();
+    const doc = new DOMParser().parseFromString(src, 'image/svg+xml');
+    const paths = [...doc.querySelectorAll('path')].map(p => p.getAttribute('d'));
+    const viewBox = doc.documentElement.getAttribute('viewBox');
+    const NS = 'http://www.w3.org/2000/svg';
+    const svgs = layers.map((layer, n) => {
+      const svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', viewBox);
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      svg.classList.add('topo-live');
+      const base = document.createElementNS(NS, 'g'); base.classList.add('base');
+      const glow = document.createElementNS(NS, 'g'); glow.classList.add('glow');
+      paths.forEach((d, i) => {
+        const a = document.createElementNS(NS, 'path'); a.setAttribute('d', d); base.appendChild(a);
+        if ((i + n) % 2) return;
+        const g = document.createElementNS(NS, 'path'); g.setAttribute('d', d); g.setAttribute('pathLength', '1000');
+        g.style.setProperty('--d', (12 + ((i + n * 5) * 7) % 14) + 's');
+        g.style.setProperty('--delay', -(((i + n) * 3.1) % 16).toFixed(1) + 's');
+        glow.appendChild(g);
+      });
+      svg.append(base, glow);
+      layer.classList.add('live');
+      layer.appendChild(svg);
+      return svg;
+    });
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
+      addEventListener('mousemove', e => {
+        const x = (e.clientX / innerWidth - .5) * -24, y = (e.clientY / innerHeight - .5) * -24;
+        svgs.forEach(svg => { svg.style.transform = `translate3d(${x}px,${y}px,0)`; });
+      }, { passive: true });
+    }
+  } catch { /* le fond fixe reste en place */ }
+})();
+
+// Photos du collage : dévoilement en balayage à l'entrée dans l'écran
+if (!reduce && 'IntersectionObserver' in window) {
+  const items = [...document.querySelectorAll('.c-item')];
+  const co = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in'); requestAnimationFrame(() => e.target.classList.remove('pre')); co.unobserve(e.target);
+  }), { threshold: .2, rootMargin: '0px 0px -8% 0px' });
+  items.forEach(el => { el.classList.add('pre'); co.observe(el); });
+}

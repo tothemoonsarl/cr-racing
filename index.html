@@ -44,12 +44,14 @@
     <div class="hero-pin">
       <div class="topo" aria-hidden="true"></div>
       <div class="hero-title">
-        <img class="hero-mark" src="assets/logo-cr.svg" alt="" width="1087" height="437">
-        <h1><span class="sans">CR</span><span class="serif">Racing</span></h1>
+        <h1 class="hero-logo-title"><img class="hero-mark" src="assets/logo-cr.svg" alt="CR Racing" width="1087" height="437"></h1>
         <p class="tag">Écurie de karting · Suisse</p>
       </div>
       <div class="hero-card">
-        <div class="hero-photo ph"><span class="todo">Photo pilote / kart</span></div>
+        <div class="hero-photo"><picture>
+          <source type="image/webp" srcset="assets/photos/accueil-800.webp 800w, assets/photos/accueil-1400.webp 1400w" sizes="100vw">
+          <img src="assets/photos/accueil-1400.jpg" srcset="assets/photos/accueil-800.jpg 800w, assets/photos/accueil-1400.jpg 1400w" sizes="100vw" alt="Pilote CR Racing en combinaison et casque, avant le départ" width="1400" height="2099" fetchpriority="high">
+        </picture></div>
         <p class="card-label">Message de l'équipe</p>
       </div>
       <p class="motto m-hero" lang="it" aria-label="Sogna Credi Fai"><span aria-hidden="true"><span class="mg">Sogna</span> <span class="mw">Credi</span> <span class="mr">Fai</span></span></p>
@@ -63,25 +65,28 @@
 
   <!-- 2. Manifeste -->
   <section class="manifesto">
+    <div class="topo" aria-hidden="true"></div>
     <img class="mini-mark" src="assets/logo-cr.svg" alt="" width="1087" height="437">
     <p class="tag light">Écurie de karting · Suisse</p>
-    <p class="big-statement"><span class="sans">Préparer le</span> <span class="serif hl">matériel</span><span class="sans">, lire les</span> <span class="serif hl">données</span><span class="sans">, aller chercher</span> <span class="serif hl">chaque dixième</span><span class="sans">. Une équipe</span> <span class="serif">en piste</span> <span class="sans">comme</span> <span class="serif">hors piste.</span></p>
+    <p class="big-statement"><span class="st"><span class="sans">Rêver du</span> <span class="serif hl">podium.</span></span> <span class="st"><span class="sans">Croire en</span> <span class="serif hl">chaque pilote.</span></span> <span class="st"><span class="sans">Faire le travail,</span> <span class="serif">tour après tour.</span></span></p>
   </section>
 
   <!-- 3. Collage photo en parallaxe, le fond passe du noir au clair -->
   <section class="collage" aria-label="L'équipe en images">
-    <figure class="c-item" style="--x:6%;--y:4%;--w:30%" data-speed="-.12"><div class="ph"></div><figcaption>Paddock, 2026</figcaption></figure>
-    <figure class="c-item" style="--x:58%;--y:0%;--w:34%" data-speed=".18"><div class="ph alt"></div><figcaption>Départ, 2026</figcaption></figure>
-    <figure class="c-item" style="--x:28%;--y:20%;--w:44%" data-speed=".05"><img src="assets/livree.jpg" alt="Planche des stickers de la livrée CR Racing" loading="lazy" width="1245" height="804"><figcaption>La livrée</figcaption></figure>
-    <figure class="c-item" style="--x:72%;--y:38%;--w:24%" data-speed="-.2"><div class="ph"></div><figcaption>Réglages, 2026</figcaption></figure>
-    <figure class="c-item" style="--x:4%;--y:44%;--w:32%" data-speed=".22"><div class="ph alt"></div><figcaption>Grille, 2026</figcaption></figure>
-    <figure class="c-item" style="--x:44%;--y:58%;--w:26%" data-speed="-.08"><div class="ph"></div><figcaption>Podium, 2026</figcaption></figure>
+    <div class="topo" aria-hidden="true"></div>
+    <figure class="c-item" style="--x:6%;--y:4%;--w:30%" data-speed="-.12"><picture><source type="image/webp" srcset="assets/photos/paddock-900.webp"><img src="assets/photos/paddock-900.jpg" alt="Un membre de l'équipe et le pilote au paddock" loading="lazy" width="900" height="1349" style="object-position:50% 30%"></picture></figure>
+    <figure class="c-item" style="--x:58%;--y:0%;--w:34%" data-speed=".18"><picture><source type="image/webp" srcset="assets/photos/depart-900.webp"><img src="assets/photos/depart-900.jpg" alt="Karts alignés sur la grille avant le départ" loading="lazy" width="900" height="1349" style="object-position:50% 45%"></picture></figure>
+    <figure class="c-item" style="--x:28%;--y:20%;--w:44%" data-speed=".05"><img src="assets/livree.jpg" alt="Planche des stickers de la livrée CR Racing" loading="lazy" width="1245" height="804"></figure>
+    <figure class="c-item" style="--x:72%;--y:38%;--w:24%" data-speed="-.2"><picture><source type="image/webp" srcset="assets/photos/reglages-900.webp"><img src="assets/photos/reglages-900.jpg" alt="Le pilote debout derrière son kart avant de partir en piste" loading="lazy" width="900" height="1349" style="object-position:50% 18%"></picture></figure>
+    <figure class="c-item" style="--x:4%;--y:44%;--w:32%" data-speed=".22"><picture><source type="image/webp" srcset="assets/photos/grille-900.webp"><img src="assets/photos/grille-900.jpg" alt="Le pilote enfile ses gants sur la grille" loading="lazy" width="900" height="1349" style="object-position:50% 35%"></picture></figure>
+    <figure class="c-item" style="--x:44%;--y:58%;--w:26%" data-speed="-.08"><picture><source type="image/webp" srcset="assets/photos/podium-900.webp"><img src="assets/photos/podium-900.jpg" alt="Le pilote fait le signe des cornes après la course" loading="lazy" width="900" height="1349" style="object-position:50% 30%"></picture></figure>
     <p class="c-text" style="--x:8%;--y:70%">Tout a commencé sur une piste de karting. Depuis, l'équipe travaille chaque week-end pour faire progresser ses pilotes, un tour après l'autre.</p>
-    <figure class="c-item" style="--x:62%;--y:84%;--w:28%" data-speed=".08"><div class="ph alt"></div><figcaption>Coulisses, 2026</figcaption></figure>
+    <figure class="c-item" style="--x:62%;--y:84%;--w:28%" data-speed=".08"><picture><source type="image/webp" srcset="assets/photos/coulisse-900.webp"><img src="assets/photos/coulisse-900.jpg" alt="Le pilote dans son kart, prêt à partir" loading="lazy" width="900" height="1349" style="object-position:50% 30%"></picture></figure>
   </section>
 
   <!-- 4. En piste / Hors piste -->
   <section class="tracks">
+    <div class="topo" aria-hidden="true"></div>
     <div class="track" id="en-piste">
       <h2><span class="sans">En</span><span class="sans">piste</span></h2>
       <svg class="scribble s-track" viewBox="0 0 220 160" aria-hidden="true"><path pathLength="1" d="M30 110c-10-40 20-80 50-74 26 6 20 60-6 74-30 16-46-30-20-50M110 120c6-30 10-60 14-84 4 24 30 70 40 84 4-28 10-60 12-84"/></svg>
@@ -101,6 +106,7 @@
 
   <!-- 5. Galerie de cartes à encoche : pilotes et livrées -->
   <section class="hall" id="equipe">
+    <div class="topo" aria-hidden="true"></div>
     <div class="hall-head">
       <h2><span class="sans">Pilotes</span><span class="serif">&amp; livrées</span></h2>
       <p>Chaque pilote dispose d'un programme de saison, d'un matériel préparé par l'équipe et d'un débrief après chaque séance.</p>
@@ -120,6 +126,7 @@
 
   <!-- 6. Saison -->
   <section class="season" id="saison">
+    <div class="topo" aria-hidden="true"></div>
     <div class="season-head">
       <h2><span class="sans">Saison</span><span class="serif">2026</span></h2>
       <p>Les manches de la saison et les résultats de l'équipe, mis à jour après chaque course.</p>
@@ -134,6 +141,7 @@
 
   <!-- 7. Partenaires : mot manuscrit + logos qui défilent -->
   <section class="partners" id="partenaires">
+    <div class="topo" aria-hidden="true"></div>
     <div class="partners-head">
       <h2><span class="sans">Partenaires</span><span class="serif">&amp; soutiens</span></h2>
       <svg class="scribble s-partners" viewBox="0 0 520 200" aria-hidden="true"><path pathLength="1" d="M20 150c30-60 70-110 100-104 24 6-6 70-40 96M150 140c10-30 40-60 64-56 20 4 4 40-22 46-20 4-14-20 10-24M250 150c4-40 16-80 30-100M260 110c40-20 70-10 60 20-8 24-40 30-56 16M360 150c10-36 36-66 60-62 20 4 10 34-12 42M440 70c-20 20-20 60 10 70 26 8 50-20 60-40"/></svg>
@@ -147,6 +155,7 @@
 
   <!-- 8. Réseaux : éventail de cartes qui s'ouvre au défilement -->
   <section class="social" data-fan>
+    <div class="topo" aria-hidden="true"></div>
     <h2><span class="sans">Suivre</span><span class="serif">l'équipe</span></h2>
     <div class="fan" aria-hidden="true">
       <div class="f-card ph"></div><div class="f-card ph alt"></div><div class="f-card"><img src="assets/livree.jpg" alt="" loading="lazy"></div><div class="f-card ph alt"></div><div class="f-card ph"></div>
@@ -157,6 +166,7 @@
 
   <!-- 9. Contact -->
   <section class="contact" id="contact">
+    <div class="topo" aria-hidden="true"></div>
     <div class="contact-head">
       <h2><span class="sans">Prenons</span><span class="serif">le départ</span></h2>
       <p>Pilote, parent ou entreprise : écrivez-nous en quelques lignes, nous vous répondons rapidement.</p>
