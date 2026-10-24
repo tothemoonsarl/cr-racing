@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CR Racing — Bientôt en piste</title>
-<meta name="description" content="Le site de l'écurie de karting CR Racing arrive bientôt. Laissez votre e-mail pour être prévenu du lancement.">
+<title>CR Racing — Sogna Credi Fai</title>
+<meta name="description" content="CR Racing, écurie de karting suisse. Laissez votre e-mail pour être prévenu du lancement.">
 <meta name="theme-color" content="#1b1c17">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,6 +46,8 @@ h1{margin:0;font-weight:400;font-size:clamp(54px,13vw,104px);line-height:.86;tex
 h1 span{display:block}
 h1 .sans{font-family:var(--sans);font-weight:800}
 h1 .serif{font-family:var(--serif);color:var(--red-hi)}
+@font-face{font-family:"CR Signature";src:url(/assets/fonts/mrs-saint-delafield.woff2) format("woff2");font-display:swap}
+.motto{margin:4px 0 6px;font:400 clamp(64px,15vw,120px)/1 "CR Signature","Brush Script MT",cursive;color:var(--paper);transform:rotate(-6deg);white-space:nowrap;animation:in 1.1s var(--ease) .15s both}
 .lead{color:#b4b5a9;max-width:40ch;animation:in 1.1s var(--ease) .2s both}
 form{width:100%}
 .notify{display:flex;gap:8px;width:100%;animation:in 1.1s var(--ease) .3s both}
@@ -70,6 +72,7 @@ details[open] summary::after{content:" –"}
 @keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.logo,h1,.lead,.notify{animation:none}}
 @media (max-width:440px){.notify,.team{flex-direction:column}button.go{padding:14px 18px}}
+.motto .mg{color:#00a652}.motto .mw{color:#fff}.motto .mr{color:var(--red-hi)}
 </style>
 </head>
 <body>
@@ -87,8 +90,9 @@ details[open] summary::after{content:" –"}
   <div class="box">
     <img class="logo" src="/assets/logo-cr.svg" alt="CR Racing" width="1087" height="437">
     <p class="kicker" data-t="kicker">Écurie de karting · Suisse</p>
-    <h1><span class="sans" data-t="t1">Bientôt</span><span class="serif" data-t="t2">en piste</span></h1>
-    <p class="lead" data-t="lead">Le site de CR Racing arrive. Laissez votre e-mail pour être prévenu du lancement et suivre l'équipe.</p>
+    <h1 class="sr-only">CR Racing</h1>
+    <p class="motto" lang="it"><span class="mg">Sogna</span> <span class="mw">Credi</span> <span class="mr">Fai</span></p>
+    <p class="lead" data-t="lead">Laissez votre e-mail pour être prévenu du lancement et suivre l'équipe.</p>
 
     <form name="lancement" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" id="f-launch">
       <input type="hidden" name="form-name" value="lancement">
@@ -155,10 +159,10 @@ details[open] summary::after{content:" –"}
 })();
 
 const T = {
-  fr: { kicker: "Écurie de karting · Suisse", t1: "Bientôt", t2: "en piste", lead: "Le site de CR Racing arrive. Laissez votre e-mail pour être prévenu du lancement et suivre l'équipe.", email: "Votre e-mail", notify: "Me prévenir", privacy: "En vous inscrivant, vous acceptez de recevoir l'annonce du lancement et les nouvelles de l'équipe. Désinscription en un clic à tout moment.", team: "Accès équipe", pw: "Mot de passe", enter: "Entrer", bad: "Mot de passe incorrect.", ok: "Merci ! Vous serez prévenu du lancement.", ko: "L'envoi a échoué. Réessayez dans un instant.", sending: "Envoi…", preview: "Aperçu : l'envoi sera actif sur le site en ligne.", title: "CR Racing — Bientôt en piste" },
-  en: { kicker: "Karting team · Switzerland", t1: "Soon", t2: "on track", lead: "The CR Racing website is on its way. Leave your email to hear about the launch and follow the team.", email: "Your email", notify: "Notify me", privacy: "By signing up, you agree to receive the launch announcement and team news. Unsubscribe in one click at any time.", team: "Team access", pw: "Password", enter: "Enter", bad: "Incorrect password.", ok: "Thank you! We will let you know at launch.", ko: "Sending failed. Please try again in a moment.", sending: "Sending…", preview: "Preview: sending will be active on the live site.", title: "CR Racing — Soon on track" },
-  de: { kicker: "Kart-Team · Schweiz", t1: "Bald", t2: "auf der Strecke", lead: "Die Website von CR Racing kommt bald. Hinterlassen Sie Ihre E-Mail, um beim Start informiert zu werden und dem Team zu folgen.", email: "Ihre E-Mail", notify: "Benachrichtigen", privacy: "Mit Ihrer Anmeldung erhalten Sie die Ankündigung des Starts und Neuigkeiten des Teams. Abmeldung jederzeit mit einem Klick.", team: "Team-Zugang", pw: "Passwort", enter: "Weiter", bad: "Falsches Passwort.", ok: "Danke! Wir informieren Sie beim Start.", ko: "Der Versand ist fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal.", sending: "Wird gesendet…", preview: "Vorschau: Der Versand ist auf der Live-Website aktiv.", title: "CR Racing — Bald auf der Strecke" },
-  it: { kicker: "Scuderia di karting · Svizzera", t1: "Presto", t2: "in pista", lead: "Il sito di CR Racing sta arrivando. Lasciate la vostra e-mail per essere avvisati al lancio e seguire la squadra.", email: "La vostra e-mail", notify: "Avvisatemi", privacy: "Iscrivendovi, accettate di ricevere l'annuncio del lancio e le novità della squadra. Disiscrizione in un clic in qualsiasi momento.", team: "Accesso squadra", pw: "Password", enter: "Entra", bad: "Password errata.", ok: "Grazie! Vi avviseremo al lancio.", ko: "Invio non riuscito. Riprovate tra un istante.", sending: "Invio…", preview: "Anteprima: l'invio sarà attivo sul sito online.", title: "CR Racing — Presto in pista" }
+  fr: { kicker: "Écurie de karting · Suisse", lead: "Laissez votre e-mail pour être prévenu du lancement et suivre l'équipe.", email: "Votre e-mail", notify: "Me prévenir", privacy: "En vous inscrivant, vous acceptez de recevoir l'annonce du lancement et les nouvelles de l'équipe. Désinscription en un clic à tout moment.", team: "Accès équipe", pw: "Mot de passe", enter: "Entrer", bad: "Mot de passe incorrect.", ok: "Merci ! Vous serez prévenu du lancement.", ko: "L'envoi a échoué. Réessayez dans un instant.", sending: "Envoi…", preview: "Aperçu : l'envoi sera actif sur le site en ligne.", title: "CR Racing — Sogna Credi Fai" },
+  en: { kicker: "Karting team · Switzerland", lead: "Leave your email to hear about the launch and follow the team.", email: "Your email", notify: "Notify me", privacy: "By signing up, you agree to receive the launch announcement and team news. Unsubscribe in one click at any time.", team: "Team access", pw: "Password", enter: "Enter", bad: "Incorrect password.", ok: "Thank you! We will let you know at launch.", ko: "Sending failed. Please try again in a moment.", sending: "Sending…", preview: "Preview: sending will be active on the live site.", title: "CR Racing — Sogna Credi Fai" },
+  de: { kicker: "Kart-Team · Schweiz", lead: "Hinterlassen Sie Ihre E-Mail, um beim Start informiert zu werden und dem Team zu folgen.", email: "Ihre E-Mail", notify: "Benachrichtigen", privacy: "Mit Ihrer Anmeldung erhalten Sie die Ankündigung des Starts und Neuigkeiten des Teams. Abmeldung jederzeit mit einem Klick.", team: "Team-Zugang", pw: "Passwort", enter: "Weiter", bad: "Falsches Passwort.", ok: "Danke! Wir informieren Sie beim Start.", ko: "Der Versand ist fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal.", sending: "Wird gesendet…", preview: "Vorschau: Der Versand ist auf der Live-Website aktiv.", title: "CR Racing — Sogna Credi Fai" },
+  it: { kicker: "Scuderia di karting · Svizzera", lead: "Lasciate la vostra e-mail per essere avvisati al lancio e seguire la squadra.", email: "La vostra e-mail", notify: "Avvisatemi", privacy: "Iscrivendovi, accettate di ricevere l'annuncio del lancio e le novità della squadra. Disiscrizione in un clic in qualsiasi momento.", team: "Accesso squadra", pw: "Password", enter: "Entra", bad: "Password errata.", ok: "Grazie! Vi avviseremo al lancio.", ko: "Invio non riuscito. Riprovate tra un istante.", sending: "Invio…", preview: "Anteprima: l'invio sarà attivo sul sito online.", title: "CR Racing — Sogna Credi Fai" }
 };
 const qs = new URLSearchParams(location.search);
 let lang = qs.get('lang') || (navigator.language || 'fr').slice(0, 2);

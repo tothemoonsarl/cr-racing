@@ -3,7 +3,7 @@
 // Le mot de passe se règle dans Netlify : variable d'environnement SITE_PASSWORD.
 // Pour ouvrir le site au public au lancement : supprimer ce fichier et la section [[edge_functions]] de netlify.toml.
 
-const PUBLIC = ['/assets/logo-cr.svg', '/assets/topo.svg', '/robots.txt', '/favicon.ico'];
+const PUBLIC = ['/assets/logo-cr.svg', '/assets/topo.svg', '/assets/fonts/mrs-saint-delafield.woff2', '/robots.txt', '/favicon.ico'];
 const FORMS = ['lancement', 'pilote', 'partenaire'];
 const COOKIE = 'cr_access';
 

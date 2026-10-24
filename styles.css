@@ -249,3 +249,13 @@ textarea{min-height:100px;resize:vertical}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 .lenis.lenis-stopped{overflow:hidden}
+
+/* Slogan « Sogna Credi Fai » en écriture liée (Mrs Saint Delafield, licence OFL) */
+@font-face{font-family:"CR Signature";src:url(assets/fonts/mrs-saint-delafield.woff2) format("woff2");font-display:swap}
+.motto{margin:0;font:400 1em/1 "CR Signature","Brush Script MT",cursive;color:var(--red-hi);text-transform:none;letter-spacing:0;white-space:nowrap}
+.m-hero{position:absolute;left:50%;top:50%;z-index:4;font-size:clamp(56px,17vw,200px);pointer-events:none;
+  transform:translate(-50%,-50%) rotate(-7deg);text-shadow:0 4px 24px rgba(0,0,0,.25)}
+.m-hero span{display:inline-block;padding:0 .25em;clip-path:inset(-20% calc((1 - var(--p2)) * 100%) -20% 0)}
+.m-foot{position:relative;font-size:clamp(70px,11vw,160px);transform:rotate(-6deg);margin:10px 0 0}
+.motto .mg{color:#00a652}.motto .mw{color:#fff}.motto .mr{color:var(--red-hi)}
+.m-hero{text-shadow:0 2px 6px rgba(0,0,0,.45),0 6px 28px rgba(0,0,0,.35)}
