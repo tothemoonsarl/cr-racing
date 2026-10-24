@@ -18,6 +18,20 @@
 html,body{height:100%}
 body{margin:0;background:var(--ink);color:var(--paper);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .topo{position:fixed;inset:0;pointer-events:none;background:var(--paper);opacity:.06;-webkit-mask:url(/assets/topo.svg) center/cover no-repeat;mask:url(/assets/topo.svg) center/cover no-repeat}
+/* Lignes topographiques animées (remplacent le fond fixe quand le JS est actif) */
+.topo-live{position:fixed;inset:-6%;width:112%;height:112%;pointer-events:none;overflow:visible;transition:transform 1.6s var(--ease)}
+.topo-live .base path{fill:none;stroke:var(--paper);stroke-opacity:.075;stroke-width:1.2;vector-effect:non-scaling-stroke}
+.topo-live .glow path{fill:none;stroke-width:1.8;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:70 930;stroke-dashoffset:0;opacity:.55}
+.topo-live .glow path:nth-child(3n){stroke:var(--red-hi)}
+.topo-live .glow path:nth-child(3n+1){stroke:var(--paper);opacity:.35}
+.topo-live .glow path:nth-child(3n+2){stroke:var(--green);opacity:.5}
+@media (prefers-reduced-motion:no-preference){
+  .topo-live .base{animation:breathe 18s ease-in-out infinite alternate;transform-origin:50% 50%}
+  .topo-live .glow path{animation:run var(--d,16s) linear var(--delay,0s) infinite}
+}
+@media (prefers-reduced-motion:reduce){.topo-live .glow{display:none}}
+@keyframes run{to{stroke-dashoffset:-1000}}
+@keyframes breathe{from{transform:scale(1) rotate(0deg)}to{transform:scale(1.04) rotate(.8deg)}}
 .stripe{position:fixed;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--green) 0 33.3%,#fff 33.3% 66.6%,var(--red-hi) 66.6%)}
 .lang{position:fixed;top:18px;right:18px;display:flex;gap:8px;z-index:2}
 .lang button{padding:0;border:0;background:none;cursor:pointer;line-height:0;opacity:.4;transition:opacity .2s}
@@ -74,7 +88,7 @@ details[open] summary::after{content:" –"}
     <img class="logo" src="/assets/logo-cr.svg" alt="CR Racing" width="1087" height="437">
     <p class="kicker" data-t="kicker">Écurie de karting · Suisse</p>
     <h1><span class="sans" data-t="t1">Bientôt</span><span class="serif" data-t="t2">en piste</span></h1>
-    <p class="lead" data-t="lead">Le site de CR Racing arrive. Laissez votre e-mail pour être prévenu du lancement.</p>
+    <p class="lead" data-t="lead">Le site de CR Racing arrive. Laissez votre e-mail pour être prévenu du lancement et suivre l'équipe.</p>
 
     <form name="lancement" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" id="f-launch">
       <input type="hidden" name="form-name" value="lancement">
@@ -87,7 +101,7 @@ details[open] summary::after{content:" –"}
       </div>
     </form>
     <p class="note" id="note" aria-live="polite"></p>
-    <p class="small" data-t="privacy">Votre adresse sert uniquement à vous prévenir du lancement.</p>
+    <p class="small" data-t="privacy">En vous inscrivant, vous acceptez de recevoir l'annonce du lancement et les nouvelles de l'équipe. Désinscription en un clic à tout moment.</p>
 
     <details id="team">
       <summary data-t="team">Accès équipe</summary>
@@ -103,11 +117,48 @@ details[open] summary::after{content:" –"}
 </main>
 
 <script>
+// Lignes topographiques animées : le SVG est chargé et injecté dans la page,
+// les contours « respirent » et des traits lumineux (vert, blanc, rouge) filent le long des lignes.
+(async () => {
+  try {
+    const src = await (await fetch('/assets/topo.svg')).text();
+    const doc = new DOMParser().parseFromString(src, 'image/svg+xml');
+    const paths = [...doc.querySelectorAll('path')].map(p => p.getAttribute('d'));
+    if (!paths.length) return;
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', doc.documentElement.getAttribute('viewBox'));
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.classList.add('topo-live');
+    const base = document.createElementNS(NS, 'g'); base.classList.add('base');
+    const glow = document.createElementNS(NS, 'g'); glow.classList.add('glow');
+    paths.forEach((d, i) => {
+      const a = document.createElementNS(NS, 'path'); a.setAttribute('d', d); base.appendChild(a);
+      if (i % 2) return; // un contour sur deux porte un trait lumineux
+      const g = document.createElementNS(NS, 'path'); g.setAttribute('d', d); g.setAttribute('pathLength', '1000');
+      g.style.setProperty('--d', (12 + (i * 7) % 14) + 's');
+      g.style.setProperty('--delay', -((i * 3.1) % 16).toFixed(1) + 's');
+      glow.appendChild(g);
+    });
+    svg.append(base, glow);
+    const old = document.querySelector('.topo');
+    old.replaceWith(svg);
+    // Parallaxe douce : les lignes suivent légèrement la souris
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      addEventListener('mousemove', e => {
+        const x = (e.clientX / innerWidth - .5) * -24, y = (e.clientY / innerHeight - .5) * -24;
+        svg.style.transform = `translate3d(${x}px,${y}px,0)`;
+      }, { passive: true });
+    }
+  } catch { /* le fond fixe reste en place */ }
+})();
+
 const T = {
-  fr: { kicker: 'Écurie de karting · Suisse', t1: 'Bientôt', t2: 'en piste', lead: 'Le site de CR Racing arrive. Laissez votre e-mail pour être prévenu du lancement.', email: 'Votre e-mail', notify: 'Me prévenir', privacy: 'Votre adresse sert uniquement à vous prévenir du lancement.', team: 'Accès équipe', pw: 'Mot de passe', enter: 'Entrer', bad: 'Mot de passe incorrect.', ok: 'Merci ! Vous serez prévenu du lancement.', ko: "L'envoi a échoué. Réessayez dans un instant.", sending: 'Envoi…', preview: "Aperçu : l'envoi sera actif sur le site en ligne.", title: 'CR Racing — Bientôt en piste' },
-  en: { kicker: 'Karting team · Switzerland', t1: 'Soon', t2: 'on track', lead: 'The CR Racing website is on its way. Leave your email to hear about the launch.', email: 'Your email', notify: 'Notify me', privacy: 'Your address is only used to tell you about the launch.', team: 'Team access', pw: 'Password', enter: 'Enter', bad: 'Incorrect password.', ok: 'Thank you! We will let you know at launch.', ko: 'Sending failed. Please try again in a moment.', sending: 'Sending…', preview: 'Preview: sending will be active on the live site.', title: 'CR Racing — Soon on track' },
-  de: { kicker: 'Kart-Team · Schweiz', t1: 'Bald', t2: 'auf der Strecke', lead: 'Die Website von CR Racing kommt bald. Hinterlassen Sie Ihre E-Mail, um beim Start informiert zu werden.', email: 'Ihre E-Mail', notify: 'Benachrichtigen', privacy: 'Ihre Adresse wird nur verwendet, um Sie über den Start zu informieren.', team: 'Team-Zugang', pw: 'Passwort', enter: 'Weiter', bad: 'Falsches Passwort.', ok: 'Danke! Wir informieren Sie beim Start.', ko: 'Der Versand ist fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal.', sending: 'Wird gesendet…', preview: 'Vorschau: Der Versand ist auf der Live-Website aktiv.', title: 'CR Racing — Bald auf der Strecke' },
-  it: { kicker: 'Scuderia di karting · Svizzera', t1: 'Presto', t2: 'in pista', lead: 'Il sito di CR Racing sta arrivando. Lasciate la vostra e-mail per essere avvisati al lancio.', email: 'La vostra e-mail', notify: 'Avvisatemi', privacy: 'Il vostro indirizzo serve solo ad avvisarvi del lancio.', team: 'Accesso squadra', pw: 'Password', enter: 'Entra', bad: 'Password errata.', ok: 'Grazie! Vi avviseremo al lancio.', ko: 'Invio non riuscito. Riprovate tra un istante.', sending: 'Invio…', preview: "Anteprima: l'invio sarà attivo sul sito online.", title: 'CR Racing — Presto in pista' }
+  fr: { kicker: "Écurie de karting · Suisse", t1: "Bientôt", t2: "en piste", lead: "Le site de CR Racing arrive. Laissez votre e-mail pour être prévenu du lancement et suivre l'équipe.", email: "Votre e-mail", notify: "Me prévenir", privacy: "En vous inscrivant, vous acceptez de recevoir l'annonce du lancement et les nouvelles de l'équipe. Désinscription en un clic à tout moment.", team: "Accès équipe", pw: "Mot de passe", enter: "Entrer", bad: "Mot de passe incorrect.", ok: "Merci ! Vous serez prévenu du lancement.", ko: "L'envoi a échoué. Réessayez dans un instant.", sending: "Envoi…", preview: "Aperçu : l'envoi sera actif sur le site en ligne.", title: "CR Racing — Bientôt en piste" },
+  en: { kicker: "Karting team · Switzerland", t1: "Soon", t2: "on track", lead: "The CR Racing website is on its way. Leave your email to hear about the launch and follow the team.", email: "Your email", notify: "Notify me", privacy: "By signing up, you agree to receive the launch announcement and team news. Unsubscribe in one click at any time.", team: "Team access", pw: "Password", enter: "Enter", bad: "Incorrect password.", ok: "Thank you! We will let you know at launch.", ko: "Sending failed. Please try again in a moment.", sending: "Sending…", preview: "Preview: sending will be active on the live site.", title: "CR Racing — Soon on track" },
+  de: { kicker: "Kart-Team · Schweiz", t1: "Bald", t2: "auf der Strecke", lead: "Die Website von CR Racing kommt bald. Hinterlassen Sie Ihre E-Mail, um beim Start informiert zu werden und dem Team zu folgen.", email: "Ihre E-Mail", notify: "Benachrichtigen", privacy: "Mit Ihrer Anmeldung erhalten Sie die Ankündigung des Starts und Neuigkeiten des Teams. Abmeldung jederzeit mit einem Klick.", team: "Team-Zugang", pw: "Passwort", enter: "Weiter", bad: "Falsches Passwort.", ok: "Danke! Wir informieren Sie beim Start.", ko: "Der Versand ist fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal.", sending: "Wird gesendet…", preview: "Vorschau: Der Versand ist auf der Live-Website aktiv.", title: "CR Racing — Bald auf der Strecke" },
+  it: { kicker: "Scuderia di karting · Svizzera", t1: "Presto", t2: "in pista", lead: "Il sito di CR Racing sta arrivando. Lasciate la vostra e-mail per essere avvisati al lancio e seguire la squadra.", email: "La vostra e-mail", notify: "Avvisatemi", privacy: "Iscrivendovi, accettate di ricevere l'annuncio del lancio e le novità della squadra. Disiscrizione in un clic in qualsiasi momento.", team: "Accesso squadra", pw: "Password", enter: "Entra", bad: "Password errata.", ok: "Grazie! Vi avviseremo al lancio.", ko: "Invio non riuscito. Riprovate tra un istante.", sending: "Invio…", preview: "Anteprima: l'invio sarà attivo sul sito online.", title: "CR Racing — Presto in pista" }
 };
 const qs = new URLSearchParams(location.search);
 let lang = qs.get('lang') || (navigator.language || 'fr').slice(0, 2);
