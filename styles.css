@@ -320,3 +320,23 @@ html.lenis,html.lenis body{height:auto}
 .collage > .c-item,.collage > .c-text{z-index:1}
 .collage > .topo{color:#8f9084}
 .tracks .s-track{position:absolute}
+
+/* ===== Fond unique : noir + une seule couche de traits fixe, identique partout ===== */
+body{background:var(--ink);color:var(--paper)}
+.topo-fixed{position:fixed;inset:0;z-index:0;color:var(--paper)}
+main,.footer{position:relative;z-index:1}
+/* Accueil : part du clair puis devient transparent sur le fond noir commun */
+.hero-pin{background:transparent;color:var(--paper)}
+.hero-pin > .topo{display:none}
+/* Sections : plus de fond propre */
+.manifesto,.collage,.tracks,.hall,.season,.partners,.social,.contact{background:transparent!important}
+/* Textes et filets adaptés au fond noir */
+.c-text{color:#b4b5a9}
+.track p,.season-head p,.partners-head p,.hall-head p{color:#b4b5a9}
+.races{border-top-color:var(--paper)}
+.races li{border-bottom-color:#3a3b33}
+.logos-track span{border-right-color:#3a3b33;color:#8f9084}
+.cta.dark{background:var(--red)}
+.socials{color:#b4b5a9}
+.big-statement .serif{color:#a7a89c}
+.notch{background:#3a3b33}
