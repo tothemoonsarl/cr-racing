@@ -340,3 +340,8 @@ main,.footer{position:relative;z-index:1}
 .socials{color:#b4b5a9}
 .big-statement .serif{color:#a7a89c}
 .notch{background:#3a3b33}
+
+/* Instagram */
+.socials .ig{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:1.5px solid currentColor;border-radius:999px;color:var(--paper);text-decoration:none;font:700 13px/1 var(--body);letter-spacing:.06em;transition:background .25s,color .25s,border-color .25s}
+.socials .ig svg{width:18px;height:18px}
+.socials .ig:hover{background:var(--red);border-color:var(--red)}
